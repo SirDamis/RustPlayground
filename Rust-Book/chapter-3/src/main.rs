@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     // VARIABLES AND CONSTANTS
 
@@ -90,6 +92,49 @@ fn main() {
         - Fixed length
         - Useful when data is allocated on stack rather than heap
         - Not as flexible as vector type(which can shrink and grow)
+
+    Accessing Array Elements:
+    variable_names[index]
     */
-    let a = [1,2,3,4,5];
+    let a: [i32; 6]= [1,2,3,4,5,6];
+    let first = a[0];
+    println!("Index 0: {first}, ...");
+    println!("Array: {:?}", a);
+    
+
+    // Function
+    let mut current_age = String::new();
+    io::stdin().read_line(&mut current_age).expect("Failed to read line");
+    let current_age: u32 = match current_age.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Please enter a positive integer!!");
+            return;
+        },
+    };
+    println!("Current age is {current_age}");
+    let future_age: u32 = age(current_age);
+    println!("Age in 5 years is {future_age}");
+
+    // Statements and Expressiions
+    /*
+        Statements: Instructions that perform some action and does not return a value.
+        e.g let y = 6;
+
+        Expressions: Evaluate to a resultant value
+        e.g let y = {
+            let x = 3;
+            x + 1
+        };
+            The expression in the above code: {
+                                                let x = 3;
+                                                x + 1
+                                            };
+        println!("The value of y is: {y}");
+    */
+}
+
+
+fn age(x:u32)-> u32{
+    x+5 //Same as return x+5;
 }
